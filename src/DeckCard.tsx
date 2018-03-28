@@ -3,7 +3,7 @@ import { Text } from "react-native";
 import { Card, Button } from "react-native-elements";
 import { CardData } from "./App";
 
-interface DeckCardProps {
+export interface DeckCardProps {
   cardData: CardData;
 }
 

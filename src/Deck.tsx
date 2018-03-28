@@ -2,6 +2,7 @@ import React from "react";
 import { View, Animated, PanResponder, PanResponderInstance } from "react-native";
 import { CardData } from "./App";
 import DeckCard from "./DeckCard";
+import AnimatedDeckCard from "./AnimatedDeckCard";
 
 interface DeckProps {
   cardDataList: CardData[];
@@ -32,9 +33,21 @@ class Deck extends React.Component<DeckProps, DeckState> {
     const { panResponder, position } = this.state;
 
     return (
-      <Animated.View style={position.getLayout()} {...panResponder.panHandlers}>
-        {cardDataList.map((cardData) => <DeckCard key={cardData.id} cardData={cardData} />)}
-      </Animated.View>
+      <View>
+        {cardDataList.map(
+          (cardData, index) =>
+            index === 0 ? (
+              <AnimatedDeckCard
+                key={cardData.id}
+                cardData={cardData}
+                panResponder={panResponder}
+                position={position}
+              />
+            ) : (
+              <DeckCard key={cardData.id} cardData={cardData} />
+            ),
+        )}
+      </View>
     );
   }
 }
