@@ -10,12 +10,16 @@ enum SWIPE_DIRECTION {
   LEFT,
 }
 
+interface AnimatedDeckCardProps extends DeckCardProps {
+  onSwipeComplete: () => void;
+}
+
 interface AnimatedDeckCardState {
   panResponder: PanResponderInstance;
   position: Animated.ValueXY;
 }
-class AnimatedDeckCard extends React.Component<DeckCardProps, AnimatedDeckCardState> {
-  constructor(props: DeckCardProps) {
+class AnimatedDeckCard extends React.Component<AnimatedDeckCardProps, AnimatedDeckCardState> {
+  constructor(props: AnimatedDeckCardProps) {
     super(props);
 
     const position = new Animated.ValueXY();
@@ -43,7 +47,7 @@ class AnimatedDeckCard extends React.Component<DeckCardProps, AnimatedDeckCardSt
     Animated.timing(this.state.position, {
       toValue: { x, y: 0 },
       duration: SWIPE_OUT_DURATION,
-    }).start();
+    }).start(() => this.props.onSwipeComplete());
   };
 
   resetPosition = () => {

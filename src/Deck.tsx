@@ -8,7 +8,20 @@ interface DeckProps {
   cardDataList: CardData[];
 }
 
-class Deck extends React.Component<DeckProps, {}> {
+interface DeckState {
+  cardIndex: number;
+}
+
+class Deck extends React.Component<DeckProps, DeckState> {
+  constructor(props: DeckProps) {
+    super(props);
+    this.state = { cardIndex: 0 };
+  }
+
+  handleSwipeComplete = () => {
+    this.setState((prevState) => ({ cardIndex: prevState.cardIndex + 1 }));
+  };
+
   render() {
     const { cardDataList } = this.props;
 
@@ -20,6 +33,7 @@ class Deck extends React.Component<DeckProps, {}> {
               <AnimatedDeckCard
                 key={cardData.id}
                 cardData={cardData}
+                onSwipeComplete={this.handleSwipeComplete}
               />
             ) : (
               <DeckCard key={cardData.id} cardData={cardData} />
