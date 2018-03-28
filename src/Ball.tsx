@@ -1,9 +1,22 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Animated } from "react-native";
 
 class Ball extends React.Component {
+  readonly position: Animated.ValueXY = new Animated.ValueXY();
+
+  componentDidMount() {
+    this.position.setValue({ x: 0, y: 0 });
+    Animated.spring(this.position, {
+      toValue: { x: 200, y: 500 },
+    }).start();
+  }
+
   render() {
-    return <View style={styles.ball} />;
+    return (
+      <Animated.View style={this.position.getLayout()}>
+        <View style={styles.ball} />
+      </Animated.View>
+    );
   }
 }
 
