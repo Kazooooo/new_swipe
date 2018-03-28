@@ -1,6 +1,8 @@
 import React from "react";
-import { Animated, PanResponderInstance } from "react-native";
+import { Animated, PanResponderInstance, Dimensions } from "react-native";
 import DeckCard, { DeckCardProps } from "./DeckCard";
+
+const SCREEN_WIDTH = Dimensions.get("window").width;
 
 interface AnimatedDeckCardProps extends DeckCardProps {
   panResponder: PanResponderInstance;
@@ -12,7 +14,7 @@ const AnimatedDeckCard: React.SFC<AnimatedDeckCardProps> = (props) => {
 
   const getAnimatedDeckCardStyle = () => {
     const rotate = position.x.interpolate({
-      inputRange: [-500, 0, 500],
+      inputRange: [-SCREEN_WIDTH * 1.5, 0, SCREEN_WIDTH * 1.5],
       outputRange: ["-120deg", "0deg", "120deg"],
     });
 
