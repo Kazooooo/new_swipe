@@ -11,7 +11,7 @@
     "object-literal-sort-keys": false,
     "interface-name": [true, "never-prefix"],
     "no-console": false,
-    "semicolon": [true, "always"],
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
     "member-access": false,
     "max-classes-per-file": false,
     "trailing-comma": [true, {"multiline": "always"}],
