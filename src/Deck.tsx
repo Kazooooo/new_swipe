@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Animated } from "react-native";
 import { CardData } from "./App";
-import Card from "./Card";
+import DeckCard from "./DeckCard";
 
 interface DeckProps {
   cardDataList: CardData[];
@@ -12,7 +12,7 @@ class Deck extends React.Component<DeckProps, {}> {
     const { cardDataList } = this.props;
     return (
       <View>
-        {cardDataList.map((cardData) => <Card key={cardData.id} cardData={cardData} />)}
+        {cardDataList.map((cardData) => <DeckCard key={cardData.id} cardData={cardData} />)}
       </View>
     );
   }

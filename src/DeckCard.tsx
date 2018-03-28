@@ -2,15 +2,15 @@ import React from "react";
 import { Text } from "react-native";
 import { CardData } from "./App";
 
-interface CardProps {
+interface DeckCardProps {
   cardData: CardData;
 }
 
-class Card extends React.Component<CardProps, {}> {
+class DeckCard extends React.Component<DeckCardProps, {}> {
   render() {
     const { cardData } = this.props;
     return <Text>{cardData.text}</Text>;
   }
 }
 
-export default Card;
+export default DeckCard;
