@@ -24,21 +24,25 @@ class Deck extends React.Component<DeckProps, DeckState> {
 
   render() {
     const { cardDataList } = this.props;
+    const { cardIndex } = this.state;
 
     return (
       <View>
-        {cardDataList.map(
-          (cardData, index) =>
-            index === 0 ? (
+        {cardDataList.map((cardData, index) => {
+          if (index < cardIndex) {
+            return null;
+          }
+          if (index === cardIndex) {
+            return (
               <AnimatedDeckCard
                 key={cardData.id}
                 cardData={cardData}
                 onSwipeComplete={this.handleSwipeComplete}
               />
-            ) : (
-              <DeckCard key={cardData.id} cardData={cardData} />
-            ),
-        )}
+            );
+          }
+          return <DeckCard key={cardData.id} cardData={cardData} />;
+        })}
       </View>
     );
   }
