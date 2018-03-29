@@ -105,7 +105,10 @@ class Deck extends React.Component<DeckProps, DeckState> {
               );
             }
             return (
-              <Animated.View key={cardData.id} style={styles.cardStyle}>
+              <Animated.View
+                key={cardData.id}
+                style={[styles.cardStyle, { top: 10 * (index - cardIndex) }]}
+              >
                 <DeckCard cardData={cardData} />
               </Animated.View>
             );
