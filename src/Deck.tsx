@@ -3,6 +3,7 @@ import { View } from "react-native";
 import { CardData } from "./App";
 import DeckCard from "./DeckCard";
 import AnimatedDeckCard from "./AnimatedDeckCard";
+import NoMoreCards from "./NoMoreCards";
 
 interface DeckProps {
   cardDataList: CardData[];
@@ -25,6 +26,10 @@ class Deck extends React.Component<DeckProps, DeckState> {
   render() {
     const { cardDataList } = this.props;
     const { cardIndex } = this.state;
+
+    if (cardIndex >= cardDataList.length) {
+      return <NoMoreCards />;
+    }
 
     return (
       <View>
