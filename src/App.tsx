@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, SafeAreaView } from "react-native";
 import Deck from "./Deck";
 
 export interface CardData {
@@ -54,9 +54,9 @@ const CardDataList: CardData[] = [
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Deck cardDataList={CardDataList} />
-      </View>
+      </SafeAreaView>
     );
   }
 }
