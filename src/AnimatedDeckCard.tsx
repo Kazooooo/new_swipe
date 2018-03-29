@@ -1,8 +1,7 @@
 import React from "react";
 import { Animated, PanResponderInstance, Dimensions, PanResponder } from "react-native";
-import DeckCard, { DeckCardProps } from "./DeckCard";
+import { SCREEN_WIDTH } from "./constants/device";
 
-const SCREEN_WIDTH = Dimensions.get("window").width;
 const SWIPE_THRESHOLD = 0.25 * SCREEN_WIDTH;
 const SWIPE_OUT_DURATION = 250;
 enum SWIPE_DIRECTION {

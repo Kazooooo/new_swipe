@@ -1,5 +1,6 @@
 import React from "react";
 import { View } from "react-native";
+import { SCREEN_WIDTH } from "./constants/device";
 import { CardData } from "./App";
 import DeckCard from "./DeckCard";
 import AnimatedDeckCard from "./AnimatedDeckCard";
@@ -52,5 +53,12 @@ class Deck extends React.Component<DeckProps, DeckState> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  cardStyle: {
+    position: "absolute",
+    width: SCREEN_WIDTH,
+  },
+});
 
 export default Deck;
