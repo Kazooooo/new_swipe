@@ -53,6 +53,12 @@ class Deck extends React.Component<DeckProps, DeckState> {
     this.state = { panResponder, position, cardIndex: 0 };
   }
 
+  componentWillReceiveProps(nextProps: DeckProps) {
+    if (nextProps.cardDataList !== this.props.cardDataList) {
+      this.setState({ cardIndex: 0 });
+    }
+  }
+
   componentDidUpdate() {
     if (UIManager.setLayoutAnimationEnabledExperimental) {
       UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -94,8 +100,6 @@ class Deck extends React.Component<DeckProps, DeckState> {
         transform: [{ rotate }],
       };
     };
-
-    console.log(cardIndex);
 
     if (cardIndex >= cardDataList.length) {
       return <NoMoreCards />;
