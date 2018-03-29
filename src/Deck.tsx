@@ -1,5 +1,13 @@
 import React from "react";
-import { StyleSheet, View, Animated, PanResponder, PanResponderInstance } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Animated,
+  PanResponder,
+  PanResponderInstance,
+  LayoutAnimation,
+  UIManager,
+} from "react-native";
 import { SCREEN_WIDTH } from "./constants/device";
 import { CardData } from "./App";
 import DeckCard from "./DeckCard";
@@ -43,6 +51,13 @@ class Deck extends React.Component<DeckProps, DeckState> {
     });
 
     this.state = { panResponder, position, cardIndex: 0 };
+  }
+
+  componentDidUpdate() {
+    if (UIManager.setLayoutAnimationEnabledExperimental) {
+      UIManager.setLayoutAnimationEnabledExperimental(true);
+    }
+    LayoutAnimation.spring();
   }
 
   forceSwipe = (direction: SWIPE_DIRECTION) => {
